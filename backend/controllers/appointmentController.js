@@ -135,3 +135,9 @@ exports.viewByUserId = function (req, res) {
     });
   });
 };
+// Handle Bad requests
+exports.badRequest = function (req, res) {
+  return res.status(400).json({
+    status: "bad request",
+  });
+};

@@ -43,7 +43,7 @@ exports.new = function (req, res) {
 exports.view = function (req, res) {
   User.findById(req.params.user_id, function (err, user) {
     if (err) {
-      return res.send({
+      return res.status(404).send({
         message: "User not found",
       });
     }
@@ -57,7 +57,7 @@ exports.view = function (req, res) {
 exports.viewByEmail = function (req, res) {
   User.findOne({ email: req.params.user_email }, function (err, user) {
     if (err) {
-      return res.send({
+      return res.status(404).send({
         message: "User not found",
       });
     }
@@ -115,4 +115,10 @@ exports.delete = function (req, res) {
       });
     }
   );
+};
+// Handle Bad requests
+exports.badRequest = function (req, res) {
+  return res.status(400).json({
+    status: "bad request",
+  });
 };

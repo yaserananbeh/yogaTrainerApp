@@ -17,7 +17,8 @@ router
   .route("/users/:user_id")
   .get(userController.view)
   .put(userController.update)
-  .delete(userController.delete);
+  .delete(userController.delete)
+  .post(userController.badRequest);
 router.route("/users/find/:user_email").get(userController.viewByEmail);
 
 // Import trainer controller
@@ -31,13 +32,13 @@ router
   .route("/trainers/:trainer_id")
   .get(trainerController.view)
   .put(trainerController.update)
-  .delete(trainerController.delete);
+  .delete(trainerController.delete)
+  .post(trainerController.badRequest);
 router.route("/trainers/find/:name").get(trainerController.viewByName);
 router
   .route("/trainers/greater/:price")
   .get(trainerController.viewByGreaterPrice);
 router.route("/trainers/less/:price").get(trainerController.viewByLessPrice);
-
 
 // Import appointment controller
 let appointmentController = require("./controllers/appointmentController");
@@ -50,7 +51,9 @@ router
   .route("/appointments/:appointment_id")
   .get(appointmentController.view)
   .put(appointmentController.update)
-  .delete(appointmentController.delete);
+  .delete(appointmentController.delete)
+  .post(appointmentController.badRequest);
+
 router
   .route("/appointments/ufind/:userId")
   .get(appointmentController.viewByUserId);
@@ -58,6 +61,5 @@ router
   .route("/appointments/tfind/:trainerId")
   .get(appointmentController.viewByTrainerId);
 
-  
 // Export API routes
 module.exports = router;
