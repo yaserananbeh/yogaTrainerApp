@@ -15,7 +15,12 @@ const PORT = process.env.PORT || 4000;
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Booking server main interface" });
 });
-
+// use the app router from app-routers.js file
 app.use("/api", apiRoutes);
+
+// handle any unexpected route with error response
+app.get("*", function (req, res) {
+  res.status(404).send({ message: "not found endPoint" });
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
