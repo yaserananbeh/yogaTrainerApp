@@ -1,4 +1,3 @@
-// userModel.js
 let mongoose = require("mongoose");
 // Setup schema
 let userSchema = mongoose.Schema({

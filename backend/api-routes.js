@@ -1,11 +1,11 @@
-// api-routes.js
 // Initialize express router
 let router = require("express").Router();
-// Set default API response
+// Set default API endpoint response
 router.get("/", function (req, res) {
   res.json({
-    status: "API Its Working",
-    message: "Welcome to RESTHub crafted with love!",
+    status: "Api index",
+    message:
+      "You can control users, trainers and appointments data from this end point",
   });
 });
 
@@ -37,6 +37,8 @@ router
   .route("/trainers/greater/:price")
   .get(trainerController.viewByGreaterPrice);
 router.route("/trainers/less/:price").get(trainerController.viewByLessPrice);
+
+
 // Import appointment controller
 let appointmentController = require("./controllers/appointmentController");
 // Appointment routes
@@ -49,7 +51,13 @@ router
   .get(appointmentController.view)
   .put(appointmentController.update)
   .delete(appointmentController.delete);
-router.route("/appointments/ufind/:userId").get(appointmentController.viewByUserId);
-router.route("/appointments/tfind/:trainerId").get(appointmentController.viewByTrainerId);
+router
+  .route("/appointments/ufind/:userId")
+  .get(appointmentController.viewByUserId);
+router
+  .route("/appointments/tfind/:trainerId")
+  .get(appointmentController.viewByTrainerId);
+
+  
 // Export API routes
 module.exports = router;

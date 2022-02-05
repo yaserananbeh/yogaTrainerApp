@@ -1,4 +1,3 @@
-// trainerModel.js
 let mongoose = require("mongoose");
 // Setup schema
 let trainerSchema = mongoose.Schema({
@@ -28,11 +27,10 @@ let trainerSchema = mongoose.Schema({
     required: true,
   },
   image: {
-    type: String,
+    type: String, //not required
   },
   yearsOfExperience: {
-    type: Number,
-    required: true,
+    type: Number, //not required
   }
 });
 // Export Trainer model

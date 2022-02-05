@@ -1,4 +1,3 @@
-// appointmentModel.js
 let mongoose = require("mongoose");
 // Setup schema
 let appointmentSchema = mongoose.Schema({
