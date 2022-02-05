@@ -5,7 +5,7 @@ Appointment = require("../models/appointmentModel");
 exports.index = function (req, res) {
   Appointment.get(function (err, appointments) {
     if (err) {
-      res.json({
+      return res.status(404).json({
         status: "error",
         message: err,
       });
@@ -28,7 +28,12 @@ exports.new = function (req, res) {
 
   // save the appointment and check for errors
   appointment.save(function (err) {
-    if (err) res.json(err);
+    if (err) {
+      return res.status(404).json({
+        status: "error",
+        message: err,
+      });
+    }
     res.json({
       message: "New appointment created!",
       data: appointment,
@@ -52,7 +57,12 @@ exports.view = function (req, res) {
 // Handle update appointment info
 exports.update = function (req, res) {
   Appointment.findById(req.params.appointment_id, function (err, appointment) {
-    if (err) res.send(err);
+    if (err) {
+      return res.status(404).json({
+        status: "error",
+        message: err,
+      });
+    }
     appointment.userId = req.body.userId;
     appointment.trainerId = req.body.trainerId;
     appointment.appointmentDate = req.body.appointmentDate;
@@ -61,7 +71,12 @@ exports.update = function (req, res) {
 
     // save the appointment and check for errors
     appointment.save(function (err) {
-      if (err) res.json(err);
+      if (err) {
+        return res.status(404).json({
+          status: "error",
+          message: err,
+        });
+      }
       res.json({
         message: "Appointment Info updated",
         data: appointment,
@@ -76,7 +91,12 @@ exports.delete = function (req, res) {
       _id: req.params.appointment_id,
     },
     function (err, appointment) {
-      if (err) res.send(err);
+      if (err) {
+        return res.status(404).json({
+          status: "error",
+          message: err,
+        });
+      }
       res.json({
         status: "success",
         message: "Appointment deleted",

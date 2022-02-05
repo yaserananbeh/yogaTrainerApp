@@ -5,7 +5,7 @@ Trainer = require("../models/trainerModel");
 exports.index = function (req, res) {
   Trainer.get(function (err, trainers) {
     if (err) {
-      res.json({
+      return res.status(404).json({
         status: "error",
         message: err,
       });
@@ -31,7 +31,12 @@ exports.new = function (req, res) {
 
   // save the trainer and check for errors
   trainer.save(function (err) {
-    if (err) res.json(err);
+    if (err) {
+      return res.status(404).json({
+        status: "error",
+        message: err,
+      });
+    }
     res.json({
       message: "New trainer created!",
       data: trainer,
@@ -55,7 +60,12 @@ exports.view = function (req, res) {
 // Handle update trainer info
 exports.update = function (req, res) {
   Trainer.findById(req.params.trainer_id, function (err, trainer) {
-    if (err) res.send(err);
+    if (err) {
+      return res.status(404).json({
+        status: "error",
+        message: err,
+      });
+    }
     trainer.name = req.body.name ? req.body.name : trainer.name;
     trainer.email = req.body.email;
     trainer.password = req.body.password;
@@ -67,7 +77,12 @@ exports.update = function (req, res) {
 
     // save the trainer and check for errors
     trainer.save(function (err) {
-      if (err) res.json(err);
+      if (err) {
+        return res.status(404).json({
+          status: "error",
+          message: err,
+        });
+      }
       res.json({
         message: "Trainer Info updated",
         data: trainer,
@@ -82,7 +97,12 @@ exports.delete = function (req, res) {
       _id: req.params.trainer_id,
     },
     function (err, trainer) {
-      if (err) res.send(err);
+      if (err) {
+        return res.status(404).json({
+          status: "error",
+          message: err,
+        });
+      }
       res.json({
         status: "success",
         message: "Trainer deleted",
