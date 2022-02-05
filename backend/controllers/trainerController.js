@@ -92,7 +92,7 @@ exports.update = function (req, res) {
 };
 // Handle delete trainer
 exports.delete = function (req, res) {
-  Trainer.remove(
+  Trainer.deleteOne(
     {
       _id: req.params.trainer_id,
     },

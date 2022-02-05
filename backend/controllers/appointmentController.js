@@ -6,7 +6,7 @@ exports.index = function (req, res) {
   Appointment.get(function (err, appointments) {
     if (err) {
       return res.status(404).json({
-        status: "error",
+        status: "can't get all appointments",
         message: err,
       });
     }
@@ -29,8 +29,8 @@ exports.new = function (req, res) {
   // save the appointment and check for errors
   appointment.save(function (err) {
     if (err) {
-      return res.status(404).json({
-        status: "error",
+      return res.status(400).json({
+        status: "error missing body data",
         message: err,
       });
     }
@@ -59,7 +59,7 @@ exports.update = function (req, res) {
   Appointment.findById(req.params.appointment_id, function (err, appointment) {
     if (err) {
       return res.status(404).json({
-        status: "error",
+        status: "can't update this appointment",
         message: err,
       });
     }
@@ -86,7 +86,7 @@ exports.update = function (req, res) {
 };
 // Handle delete appointment
 exports.delete = function (req, res) {
-  Appointment.remove(
+  Appointment.deleteOne(
     {
       _id: req.params.appointment_id,
     },
@@ -104,6 +104,7 @@ exports.delete = function (req, res) {
     }
   );
 };
+// Handle view appointments that have same trainer id
 exports.viewByTrainerId = function (req, res) {
   Appointment.find(
     { trainerId: req.params.trainerId },
@@ -120,6 +121,7 @@ exports.viewByTrainerId = function (req, res) {
     }
   );
 };
+// Handle view appointments that have same user id
 exports.viewByUserId = function (req, res) {
   Appointment.find({ userId: req.params.userId }, function (err, appointment) {
     if (err) {

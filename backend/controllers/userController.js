@@ -98,7 +98,7 @@ exports.update = function (req, res) {
 };
 // Handle delete user
 exports.delete = function (req, res) {
-  User.remove(
+  User.deleteOne(
     {
       _id: req.params.user_id,
     },
