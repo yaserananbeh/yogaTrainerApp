@@ -23,7 +23,7 @@ exports.new = function (req, res) {
   user.name = req.body.name ? req.body.name : user.name;
   user.email = req.body.email;
   user.password = req.body.password;
-  user.phone = req.body.phone;
+  user.phone = req.body.phone ? req.body.phone : null;
   user.userRole = req.body.userRole ? req.body.userRole : 1;
   // save the user and check for errors
   user.save(function (err) {
@@ -79,7 +79,7 @@ exports.update = function (req, res) {
     user.name = req.body.name ? req.body.name : user.name;
     user.email = req.body.email;
     user.password = req.body.password;
-    user.phone = req.body.phone;
+    user.phone = req.body.phone ? req.body.phone : null;
     user.userRole = req.body.userRole ? req.body.userRole : 1;
     // save the user and check for errors
     user.save(function (err) {
