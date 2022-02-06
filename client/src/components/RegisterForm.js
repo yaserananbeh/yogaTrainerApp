@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
 
-function RegisterPage() {
+function RegisterForm() {
   const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
@@ -14,13 +14,7 @@ function RegisterPage() {
     var re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return re.test(str);
   };
-  const handleSubmitLogin = (e) => {
-    e.preventDefault();
-    let fullName = e.target.formBasicFullName.value;
-    let email = e.target.formBasicEmail.value;
-    let password = e.target.formBasicPassword.value;
-    let password2 = e.target.formBasicPassword2.value;
-    let userType = e.target.formBasicUserType.value;
+  const checkTheValidation = (e, fullName, email, password, password2) => {
     let registerLock = 0;
     if (validateEmail(email)) {
       e.target.formBasicEmail.nextSibling.classList = "form-text text-success";
@@ -53,6 +47,21 @@ function RegisterPage() {
         "form-text text-danger";
       registerLock++;
     }
+  };
+  const handleSubmitRegister = (e) => {
+    e.preventDefault();
+    let fullName = e.target.formBasicFullName.value;
+    let email = e.target.formBasicEmail.value;
+    let password = e.target.formBasicPassword.value;
+    let password2 = e.target.formBasicPassword2.value;
+    let userType = e.target.formBasicUserType.value;
+    let registerLock = checkTheValidation(
+      e,
+      fullName,
+      email,
+      password,
+      password2
+    );
     if (registerLock == 0) {
       // add new user
       let newUserBody = {
@@ -68,16 +77,10 @@ function RegisterPage() {
     } else {
       console.log("can't register");
     }
-
-    // get users
-    // axios
-    //   .get(`http://localhost:4000/api/users/`)
-    //   // .then((res) => res.json())
-    //   .then((usersData) => console.log(usersData));
   };
   return (
     <div>
-      <Form onSubmit={handleSubmitLogin}>
+      <Form onSubmit={handleSubmitRegister}>
         <Form.Group className="mb-3" controlId="formBasicFullName">
           <Form.Label>Full Name</Form.Label>
           <Form.Control type="text" placeholder="Enter Your Name" />
@@ -134,4 +137,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default RegisterForm;
