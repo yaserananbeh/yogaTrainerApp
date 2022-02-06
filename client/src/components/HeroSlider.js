@@ -8,7 +8,7 @@ function HeroSlider() {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="https://yogamedicine.com/wp-content/uploads/2019/11/FindATeacher.jpg"
+            src="./assets/images/slider-1.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -19,7 +19,7 @@ function HeroSlider() {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="https://yogamedicine.com/wp-content/uploads/Calendar-1.jpg"
+            src="./assets/images/slider-2.jpg"
             alt="Second slide"
           />
           <Carousel.Caption>
