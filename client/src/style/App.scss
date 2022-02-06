@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+:root {
+  --black: #111;
+  --smokeWhite: #eee;
+  --testRed: rgb(201, 34, 34);
+  // background-color: var(--testRed);
+}
+.AppMainContainer {
+  & > h5.testHeading {
+    background-color: var(--testRed);
+    color: var(--smokeWhite);
+  }
+}
