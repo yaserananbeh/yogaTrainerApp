@@ -20,8 +20,8 @@ let userSchema = mongoose.Schema({
   },
   userRole: {
     type: Number,
-    default: 1,
-    // 0 for admin , otherwise user //future work
+    default: 2,
+    // 0 for admin, 1 for trainer , 2 for user //////0 admin future work
   },
 });
 // Export User model

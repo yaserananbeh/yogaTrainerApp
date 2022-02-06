@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 // new way to handle parse the request body to a json file
 app.use(express.json());
+// import cors
+let cors = require("cors");
+app.use(cors());
 // Import Mongoose
 let mongoose = require("mongoose");
 // Import routes
