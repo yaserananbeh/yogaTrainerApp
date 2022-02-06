@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function RegisterForm() {
   const validateEmail = (email) => {
@@ -125,13 +126,14 @@ function RegisterForm() {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="remember me" />
-        </Form.Group>
-
         <Button variant="primary" type="submit">
-          Submit
+          Register
         </Button>
+        <Form.Group className="mb-3">
+          <Form.Label>
+            You have an account ? <Link to="/login">Sign in </Link>
+          </Form.Label>
+        </Form.Group>
       </Form>
     </div>
   );

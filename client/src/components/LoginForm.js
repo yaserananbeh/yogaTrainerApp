@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const validateEmail = (email) => {
@@ -106,6 +107,11 @@ function LoginForm() {
         <Button variant="primary" type="submit">
           Login
         </Button>
+        <Form.Group className="mb-3">
+          <Form.Label>
+            You don't have an account ? <Link to="/register">Register </Link>
+          </Form.Label>
+        </Form.Group>
       </Form>
     </div>
   );

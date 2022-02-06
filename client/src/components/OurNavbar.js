@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react"; //, { useContext }
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap/";
 import { NavLink } from "react-router-dom";
-import { LoggedUserContext } from "../App";
+// import { LoggedUserContext } from "../App";
 function OurNavbar() {
   // const { currentLoggedInUser, setCurrentLoggedInUser } =
   //   useContext(LoggedUserContext);
@@ -20,7 +20,7 @@ function OurNavbar() {
               <NavLink to="/" className="nav-link">
                 Home
               </NavLink>
-              <NavLink to="/" className="nav-link">
+              <NavLink to="/findTrainer" className="nav-link">
                 Find Trainer
               </NavLink>
               <NavLink to="/" className="nav-link">
