@@ -1,32 +1,40 @@
 import React from "react";
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap/";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function OurNavbar() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>Yoga Trainers</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/">
+            Yoga Trainers
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/"> Home </Link>
-              </Nav.Link>
-              <Nav.Link>Find Trainer</Nav.Link>
-              <Nav.Link>About Us</Nav.Link>
+              <NavLink to="/" className="nav-link">
+                Home
+              </NavLink>
+              <NavLink to="/" className="nav-link">
+                Find Trainer
+              </NavLink>
+              <NavLink to="/" className="nav-link">
+                About Us
+              </NavLink>
             </Nav>
             <Nav>
               <NavDropdown title="Login / Sign up" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/login"> Login </Link>
+                <NavDropdown.Item as={NavLink} to="/login">
+                  Login
                 </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/register">Sign up </Link>
+                <NavDropdown.Item as={NavLink} to="/register">
+                  Sign up
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>Give a Feedback</NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/">
+                  Give a Feedback
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
