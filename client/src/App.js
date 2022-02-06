@@ -1,16 +1,25 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/App.scss";
+import OurNavbar from "./components/OurNavbar";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="AppMainContainer">
-      <i className="fab fa-500px"></i>
-      <h5 className="testHeading">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi maiores
-        odio nesciunt eaque, sed a eius nostrum! Voluptates optio sit quidem at.
-        Animi repellendus voluptas corporis tenetur a aut possimus?
-      </h5>
+      <BrowserRouter>
+        <OurNavbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
