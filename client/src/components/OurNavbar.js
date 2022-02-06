@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap/";
 import { NavLink } from "react-router-dom";
-
+import { LoggedUserContext } from "../App";
 function OurNavbar() {
+  // const { currentLoggedInUser, setCurrentLoggedInUser } =
+  //   useContext(LoggedUserContext);
+  // onClick={() => setCurrentLoggedInUser("yaser")}
+  // {currentLoggedInUser}
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

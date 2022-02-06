@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/App.scss";
 import OurNavbar from "./components/OurNavbar";
@@ -8,17 +8,23 @@ import RegisterPage from "./pages/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 
+export const LoggedUserContext = createContext();
 function App() {
+  const [currentLoggedInUser, setCurrentLoggedInUser] = useState("test");
   return (
     <div className="AppMainContainer">
       <BrowserRouter>
-        <OurNavbar />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-        <Footer />
+        <LoggedUserContext.Provider
+          value={{ currentLoggedInUser, setCurrentLoggedInUser }}
+        >
+          <OurNavbar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+          <Footer />
+        </LoggedUserContext.Provider>
       </BrowserRouter>
     </div>
   );
