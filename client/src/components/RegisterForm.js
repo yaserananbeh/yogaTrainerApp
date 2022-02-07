@@ -1,9 +1,11 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function RegisterForm() {
+  const navigate = useNavigate();
   const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
@@ -47,6 +49,7 @@ function RegisterForm() {
         "form-text text-danger";
       registerLock++;
     }
+    return registerLock;
   };
   const handleSubmitRegister = (e) => {
     e.preventDefault();
@@ -72,10 +75,26 @@ function RegisterForm() {
       };
       axios
         .post(`http://localhost:4000/api/users/`, newUserBody)
-        .then((usersData) => console.log(usersData))
+        .then(() => {
+          Swal.fire({
+            position: "top-end",
+            color: "green",
+            text: "You have registered successfully",
+            showConfirmButton: false,
+            background: "#eee",
+            timer: 3000,
+          });
+          navigate("/login");
+        })
         .catch((err) => console.log(err));
     } else {
-      console.log("can't register");
+      Swal.fire({
+        position: "top-end",
+        color: "red",
+        text: "Please follow the form instructions",
+        showConfirmButton: false,
+        timer: 3000,
+      });
     }
   };
   return (
