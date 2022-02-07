@@ -3,8 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import TrainerCard from "./TrainerCard";
 import "../style/TrainerCardsContainer.scss";
+import TrainerSearchBar from "./TrainerSearchBar";
 function TrainerCardsContainer() {
   const [trainers, setTrainers] = useState(null);
+  const [word, setWord] = React.useState("");
   useEffect(() => {
     axios
       .get(`http://localhost:4000/api/trainers/`)
@@ -17,11 +19,22 @@ function TrainerCardsContainer() {
   }, []);
   return (
     <div style={{ backgroundColor: "var(--smokeWhite)" }}>
+      <TrainerSearchBar trainers={trainers} setWord={setWord} />
       <div className="trainerCardsMainContainer">
         {trainers ? (
-          trainers.map((data, index) => (
-            <TrainerCard trainerInfo={data} key={data.email + index} />
-          ))
+          word ? (
+            trainers
+              .filter(
+                (data) => data.name.toLowerCase() == word.toLocaleLowerCase()
+              )
+              .map((data, index) => (
+                <TrainerCard trainerInfo={data} key={data.email + index} />
+              ))
+          ) : (
+            trainers.map((data, index) => (
+              <TrainerCard trainerInfo={data} key={data.email + index} />
+            ))
+          )
         ) : (
           <h1 className="emptyTrainersMessage">
             No Trainers Available Right Now
