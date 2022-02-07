@@ -1,0 +1,23 @@
+.trainerCardsMainContainer {
+  text-align: center;
+  background-color: var(--smokeWhite);
+  padding: 5rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 0;
+  & > div {
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+  & > .emptyTrainersMessage {
+    grid-area: 1/2;
+  }
+  .trainerOneCardMainContainer {
+    .MuiCardActions-root {
+      button {
+        margin: auto;
+        background-color: #3d505a;
+      }
+    }
+  }
+}
