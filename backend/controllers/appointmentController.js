@@ -135,6 +135,28 @@ exports.viewByUserId = function (req, res) {
     });
   });
 };
+// Handle view appointments that have same appointment trainerId, date and time
+exports.viewIfExistAppointment = function (req, res) {
+  Appointment.find(
+    {
+      trainerId: req.body.trainerId,
+      appointmentDate: req.body.appointmentDate,
+      appointmentHour: req.body.appointmentHour
+    },
+    function (err, appointment) {
+      console.log(appointment);
+      if (err) {
+        return res.status(404).send({
+          message: "Appointment not found",
+        });
+      }
+      res.json({
+        message: "Appointment details loading..",
+        data: appointment,
+      });
+    }
+  );
+};
 // Handle Bad requests
 exports.badRequest = function (req, res) {
   return res.status(400).json({

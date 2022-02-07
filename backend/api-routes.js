@@ -51,8 +51,8 @@ router
   .route("/appointments/:appointment_id")
   .get(appointmentController.view)
   .put(appointmentController.update)
-  .delete(appointmentController.delete)
-  .post(appointmentController.badRequest);
+  .delete(appointmentController.delete);
+// .post(appointmentController.badRequest);
 
 router
   .route("/appointments/ufind/:userId")
@@ -60,6 +60,9 @@ router
 router
   .route("/appointments/tfind/:trainerId")
   .get(appointmentController.viewByTrainerId);
+router
+  .route("/appointments/efind/")
+  .post(appointmentController.viewIfExistAppointment);
 
 // Export API routes
 module.exports = router;
