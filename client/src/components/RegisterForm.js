@@ -29,7 +29,6 @@ function RegisterForm() {
     } else {
       e.target.formBasicFullName.nextSibling.classList =
         "form-text text-danger";
-
       registerLock++;
     }
     if (checkPassword(password)) {

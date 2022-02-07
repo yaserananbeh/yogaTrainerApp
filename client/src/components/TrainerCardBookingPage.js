@@ -9,7 +9,7 @@ import {
   Typography,
   Button,
 } from "@mui/material/";
-import { red, blueGrey } from "@mui/material/colors";
+import { red, blueGrey,lightBlue } from "@mui/material/colors";
 import BookIcon from "@mui/icons-material/Book";
 import { Link } from "react-router-dom";
 
@@ -43,7 +43,7 @@ export default function RecipeReviewCard({ trainerInfo }) {
         }
         alt={trainerInfo.name}
       />
-      <CardContent sx={{ color: red[300] }}>
+      <CardContent sx={{ color: lightBlue[600] }}>
         <Typography gutterBottom variant="h6" component="div">
           Price Per Hour : {trainerInfo.pricePerHour} JOD
         </Typography>

@@ -137,7 +137,7 @@ exports.viewByUserId = function (req, res) {
 };
 // Handle view appointments that have same appointment trainerId, date and time
 exports.viewIfExistAppointment = function (req, res) {
-  Appointment.find(
+  Appointment.findOne(
     {
       trainerId: req.body.trainerId,
       appointmentDate: req.body.appointmentDate,

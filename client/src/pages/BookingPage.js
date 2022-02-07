@@ -31,7 +31,7 @@ function BookingPage() {
               <TrainerCardBookingPage trainerInfo={trainerInfo} />
             </Col>
             <Col>
-              <BookingForm/>
+              <BookingForm trainerInfo={trainerInfo} />
             </Col>
           </Row>
         )}
