@@ -14,8 +14,10 @@
   }
   .trainerOneCardMainContainer {
     .MuiCardActions-root {
-      button {
+      a {
         margin: auto;
+      }
+      button {
         background-color: #3d505a;
       }
     }

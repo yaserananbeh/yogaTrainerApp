@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import FindTrainerPage from "./pages/FindTrainerPage";
+import BookingPage from "./pages/BookingPage";
 
 export const LoggedUserContext = createContext();
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/findTrainer" element={<FindTrainerPage />} />
+            <Route path="/bookingPage/:trainerId" element={<BookingPage />} />
           </Routes>
           <Footer />
         </LoggedUserContext.Provider>

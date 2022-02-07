@@ -4,7 +4,6 @@ import {
   CardHeader,
   CardMedia,
   CardContent,
-  CardActions,
   Avatar,
   IconButton,
   Typography,
@@ -27,13 +26,6 @@ export default function RecipeReviewCard({ trainerInfo }) {
           <Avatar sx={{ bgcolor: blueGrey[500] }} aria-label="recipe">
             {trainerInfo.name[0]}
           </Avatar>
-        }
-        action={
-          <Link to={`/bookingPage/${trainerInfo._id}`}>
-            <IconButton aria-label="book">
-              <BookIcon />
-            </IconButton>
-          </Link>
         }
         title={trainerInfo.name}
         subheader={
@@ -68,13 +60,6 @@ export default function RecipeReviewCard({ trainerInfo }) {
           Phone : {trainerInfo.phone}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <Link to={`/bookingPage/${trainerInfo._id}`}>
-          <Button variant="contained" size="medium">
-            Book Now
-          </Button>
-        </Link>
-      </CardActions>
     </Card>
   );
 }
