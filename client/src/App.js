@@ -9,10 +9,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import FindTrainerPage from "./pages/FindTrainerPage";
 import BookingPage from "./pages/BookingPage";
+import TrainerPage from "./pages/TrainerPage";
+import LogoutPage from "./pages/LogoutPage";
 
 export const LoggedUserContext = createContext();
 function App() {
-  const [currentLoggedInUser, setCurrentLoggedInUser] = useState("test");
+  const [currentLoggedInUser, setCurrentLoggedInUser] = useState("null");
   return (
     <div className="AppMainContainer">
       <BrowserRouter>
@@ -26,6 +28,8 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/findTrainer" element={<FindTrainerPage />} />
             <Route path="/bookingPage/:trainerId" element={<BookingPage />} />
+            <Route path="/trainerPage/" element={<TrainerPage />} />
+            <Route path="/logout" element={<LogoutPage />} />
           </Routes>
           <Footer />
         </LoggedUserContext.Provider>

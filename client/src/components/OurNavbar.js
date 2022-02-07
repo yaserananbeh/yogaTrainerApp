@@ -1,12 +1,10 @@
-import React from "react"; //, { useContext }
+import React, { useContext } from "react"; //
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap/";
 import { NavLink } from "react-router-dom";
-// import { LoggedUserContext } from "../App";
+import { LoggedUserContext } from "../App";
 function OurNavbar() {
-  // const { currentLoggedInUser, setCurrentLoggedInUser } =
-  //   useContext(LoggedUserContext);
-  // onClick={() => setCurrentLoggedInUser("yaser")}
-  // {currentLoggedInUser}
+  const { currentLoggedInUser, setCurrentLoggedInUser } =
+    useContext(LoggedUserContext);
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -28,13 +26,33 @@ function OurNavbar() {
               </NavLink>
             </Nav>
             <Nav>
-              <NavDropdown title="Login / Sign up" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={NavLink} to="/login">
-                  Login
-                </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to="/register">
-                  Sign up
-                </NavDropdown.Item>
+              <NavDropdown
+                title={
+                  currentLoggedInUser.name
+                    ? currentLoggedInUser.name
+                    : "Login / Sign up"
+                }
+                id="collasible-nav-dropdown"
+              >
+                {currentLoggedInUser.name ? (
+                  <>
+                    <NavDropdown.Item as={NavLink} to="/profile">
+                      Profile
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to="/logout">
+                      Logout
+                    </NavDropdown.Item>
+                  </>
+                ) : (
+                  <>
+                    <NavDropdown.Item as={NavLink} to="/login">
+                      Login
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to="/register">
+                      Sign up
+                    </NavDropdown.Item>
+                  </>
+                )}
                 <NavDropdown.Divider />
                 <NavDropdown.Item as={NavLink} to="/">
                   Give a Feedback

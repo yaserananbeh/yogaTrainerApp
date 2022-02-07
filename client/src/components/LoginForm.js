@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { LoggedUserContext } from "../App";
+
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function LoginForm() {
+  const navigate = useNavigate();
+  const { currentLoggedInUser, setCurrentLoggedInUser } =
+    useContext(LoggedUserContext);
   const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
@@ -58,7 +65,16 @@ function LoginForm() {
             resUserData.userRole == userType
           ) {
             if (resUserData.userRole == 1) {
-              console.log("trainer");
+              Swal.fire({
+                position: "top-end",
+                color: "green",
+                text: `Welcome Trainer ${resUserData.name}`,
+                showConfirmButton: false,
+                background: "#eee",
+                timer: 4000,
+              });
+              setCurrentLoggedInUser(resUserData);
+              navigate("/trainerPage");
             } else {
               console.log("user");
             }
