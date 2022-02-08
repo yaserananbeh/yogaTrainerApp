@@ -21,9 +21,9 @@ function OurNavbar() {
               <NavLink to="/findTrainer" className="nav-link">
                 Find Trainer
               </NavLink>
-              <NavLink to="/" className="nav-link">
+              {/* <NavLink to="/" className="nav-link">
                 About Us
-              </NavLink>
+              </NavLink> */}
             </Nav>
             <Nav>
               <NavDropdown
