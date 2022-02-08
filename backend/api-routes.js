@@ -34,7 +34,7 @@ router
   .put(trainerController.update)
   .delete(trainerController.delete)
   .post(trainerController.badRequest);
-router.route("/trainers/find/:name").get(trainerController.viewByName);
+router.route("/trainers/find/:email").get(trainerController.viewByEmail);
 router
   .route("/trainers/greater/:price")
   .get(trainerController.viewByGreaterPrice);

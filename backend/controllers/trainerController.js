@@ -110,8 +110,8 @@ exports.delete = function (req, res) {
     }
   );
 };
-exports.viewByName = function (req, res) {
-  Trainer.find({ name: req.params.name }, function (err, trainer) {
+exports.viewByEmail = function (req, res) {
+  Trainer.findOne({ email: req.params.email }, function (err, trainer) {
     if (err) {
       return res.send({
         message: "Trainer not found",
