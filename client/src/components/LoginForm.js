@@ -74,6 +74,10 @@ function LoginForm() {
                 timer: 4000,
               });
               setCurrentLoggedInUser(resUserData);
+              localStorage.setItem(
+                "loggedUserId",
+                JSON.stringify(resUserData._id)
+              );
               navigate("/trainerPage");
             } else {
               console.log("user");
