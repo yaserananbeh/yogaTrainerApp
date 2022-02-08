@@ -4,7 +4,7 @@ import CompleteTrainerData from "../components/CompleteTrainerData";
 import TrainerAppointmentsTable from "../components/TrainerAppointmentsTable";
 import axios from "axios";
 function TrainerPage() {
-  const currentTrainerName = "test";
+  const currentTrainerName = "testssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
   const [trainerData, setTrainerData] = useState([]);
   const [appointmentsData, setAppointmentsData] = useState([]);
   useEffect(() => {
@@ -41,7 +41,7 @@ function TrainerPage() {
           "There's No Appointments"
         )
       ) : (
-        <CompleteTrainerData />
+        <CompleteTrainerData trainerData={trainerData} />
       )}
     </div>
   );
