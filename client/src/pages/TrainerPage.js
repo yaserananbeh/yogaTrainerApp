@@ -4,10 +4,11 @@ import CompleteTrainerData from "../components/CompleteTrainerData";
 import TrainerAppointmentsTable from "../components/TrainerAppointmentsTable";
 import axios from "axios";
 function TrainerPage() {
-  const currentTrainerName = "testssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+  const [currentTrainerName, setCurrentTrainerName] = useState("yser");
   const [trainerData, setTrainerData] = useState([]);
   const [appointmentsData, setAppointmentsData] = useState([]);
   useEffect(() => {
+    console.log("test");
     axios
       .get(`http://localhost:4000/api/trainers/find/${currentTrainerName}`)
       .then((trainerData) => {
@@ -29,7 +30,7 @@ function TrainerPage() {
       .catch((err) => {
         return console.log(`error : ${err.message}`);
       });
-  }, []);
+  }, [currentTrainerName]);
 
   return (
     <div>
@@ -41,7 +42,10 @@ function TrainerPage() {
           "There's No Appointments"
         )
       ) : (
-        <CompleteTrainerData trainerData={trainerData} />
+        <CompleteTrainerData
+          setCurrentTrainerName={setCurrentTrainerName}
+          currentTrainerName={currentTrainerName}
+        />
       )}
     </div>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function CompleteTrainerData() {
+function CompleteTrainerData({ currentTrainerName, setCurrentTrainerName }) {
   const checkTheValidation = (e, years, city, price, image) => {
     let addTrainerLock = 0;
 
@@ -34,9 +34,9 @@ function CompleteTrainerData() {
     );
     if (addTrainerLock == 0) {
       // add new trainer
-      let fullName = "yser";
-      let email = "test";
-      let password = 13456;
+      let fullName = "yaser123456";
+      let email = "test@test.com";
+      let password = 123456;
 
       let newTrainerBody = {
         name: fullName,
@@ -57,19 +57,18 @@ function CompleteTrainerData() {
             background: "#eee",
             timer: 3000,
           });
-          // navigate("/login");
+          setCurrentTrainerName(fullName);
         })
         .catch((err) => console.log(err));
+    } else {
+      Swal.fire({
+        position: "top-end",
+        color: "red",
+        text: "Please follow the form instructions",
+        showConfirmButton: false,
+        timer: 3000,
+      });
     }
-    // else {
-    //   Swal.fire({
-    //     position: "top-end",
-    //     color: "red",
-    //     text: "Please follow the form instructions",
-    //     showConfirmButton: false,
-    //     timer: 3000,
-    //   });
-    // }
   };
   return (
     <div>
