@@ -80,7 +80,20 @@ function LoginForm() {
               );
               navigate("/trainerPage");
             } else {
-              console.log("user");
+              Swal.fire({
+                position: "top-end",
+                color: "green",
+                text: `Welcome ${resUserData.name}`,
+                showConfirmButton: false,
+                background: "#eee",
+                timer: 4000,
+              });
+              setCurrentLoggedInUser(resUserData);
+              localStorage.setItem(
+                "loggedUserId",
+                JSON.stringify(resUserData._id)
+              );
+              navigate("/");
             }
           } else {
             console.log("bad credentials");
