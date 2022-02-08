@@ -71,7 +71,7 @@ function RegisterForm() {
         name: fullName,
         email: email,
         password: password,
-        userType: userType,
+        userRole: userType,
       };
       axios
         .post(`http://localhost:4000/api/users/`, newUserBody)
