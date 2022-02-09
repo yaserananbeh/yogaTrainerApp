@@ -98,7 +98,7 @@ function RegisterForm() {
     }
   };
   return (
-    <div>
+    <div className="formContainer">
       <Form onSubmit={handleSubmitRegister}>
         <Form.Group className="mb-3" controlId="formBasicFullName">
           <Form.Label>Full Name</Form.Label>

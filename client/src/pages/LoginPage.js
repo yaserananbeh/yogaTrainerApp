@@ -5,7 +5,10 @@ import "../style/LoginPage.scss";
 function LoginPage() {
   return (
     <div className="loginPageMainContainer">
-      <LoginForm />
+      <fieldset>
+        <legend>Login</legend>
+        <LoginForm />
+      </fieldset>
     </div>
   );
 }
