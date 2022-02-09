@@ -120,44 +120,46 @@ function LoginForm() {
   };
   return (
     <div>
-      <Form onSubmit={handleSubmitLogin}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted"></Form.Text>
-        </Form.Group>
+      <fieldset>
+        <Form onSubmit={handleSubmitLogin}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-          <Form.Text className="text-muted"></Form.Text>
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicUserType">
-          <Form.Label>Register As </Form.Label>
+          <Form.Group className="mb-3" controlId="formBasicUserType">
+            <Form.Label>Register As </Form.Label>
 
-          <Form.Select
-            aria-label="Default select example"
-            required
-            defaultValue={2}
-          >
-            <option hidden disabled>
-              Choose an option
-            </option>
-            <option value="2">User</option>
-            <option value="1">Trainer</option>
-          </Form.Select>
-        </Form.Group>
+            <Form.Select
+              aria-label="Default select example"
+              required
+              defaultValue={2}
+            >
+              <option hidden disabled>
+                Choose an option
+              </option>
+              <option value="2">User</option>
+              <option value="1">Trainer</option>
+            </Form.Select>
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-        <Form.Group className="mb-3">
-          <Form.Label>
-            You don't have an account ? <Link to="/register">Register </Link>
-          </Form.Label>
-        </Form.Group>
-      </Form>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+          <Form.Group className="mb-3">
+            <Form.Label>
+              You don't have an account ? <Link to="/register">Register </Link>
+            </Form.Label>
+          </Form.Group>
+        </Form>
+      </fieldset>
     </div>
   );
 }
