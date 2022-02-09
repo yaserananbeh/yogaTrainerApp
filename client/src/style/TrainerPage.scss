@@ -1,0 +1,22 @@
+.trainerPageMainContainer {
+  background-color: var(--smockWhite);
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  align-items: center;
+  width: 80%;
+  & > fieldset {
+    width: 50%;
+    & > div {
+      width: 100%;
+      background-color: rgb(114, 175, 194);
+      padding: 1rem;
+    }
+  }
+  .appointmentsTable{
+    .TableHead{
+      background-color: rgb(114, 175, 194);
+    }
+  }
+}

@@ -47,9 +47,10 @@ export default function BasicTable({ appointmentsData }) {
   };
   return (
     <div style={{ width: "90%", margin: "auto" }}>
-      <TableContainer component={Paper}>
+      <h1>Your Appointments</h1>
+      <TableContainer component={Paper} className="appointmentsTable">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead className="TableHead">
             <TableRow>
               <TableCell>NO.</TableCell>
               <TableCell align="right">User</TableCell>

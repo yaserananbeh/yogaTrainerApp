@@ -4,6 +4,7 @@ import axios from "axios";
 import { LoggedUserContext } from "../App";
 import TrainerAppointmentsTable from "../components/TrainerAppointmentsTable";
 import CompleteTrainerData from "../components/CompleteTrainerData";
+import "../style/TrainerPage.scss";
 
 function Test() {
   const { currentLoggedInUser, setCurrentLoggedInUser } =
@@ -44,16 +45,21 @@ function Test() {
   return (
     <div>
       <SubHeroImage page="Trainer Dashboard" />
-      {trainerData ? (
-        <TrainerAppointmentsTable appointmentsData={appointmentsData} />
-      ) : (
-        <CompleteTrainerData
-          test={test}
-          setTest={setTest}
-          currentLoggedInUser={currentLoggedInUser}
-          setCurrentLoggedInUser={setCurrentLoggedInUser}
-        />
-      )}
+      <div className="trainerPageMainContainer">
+        {trainerData ? (
+          <TrainerAppointmentsTable appointmentsData={appointmentsData} />
+        ) : (
+          <fieldset>
+            <legend>Complete Data To Become A Trainer</legend>
+            <CompleteTrainerData
+              test={test}
+              setTest={setTest}
+              currentLoggedInUser={currentLoggedInUser}
+              setCurrentLoggedInUser={setCurrentLoggedInUser}
+            />
+          </fieldset>
+        )}
+      </div>
     </div>
   );
 }
