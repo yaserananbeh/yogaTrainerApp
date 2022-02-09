@@ -22,7 +22,7 @@ export default function FreeSolo({ trainers, word, setWord }) {
               onChange={(e) => {
                 setWord(e.target.value);
               }}
-              label="Search input"
+              label="Search By Name"
               InputProps={{
                 ...params.InputProps,
                 type: "search",

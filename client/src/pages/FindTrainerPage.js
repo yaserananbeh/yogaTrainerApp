@@ -1,6 +1,7 @@
 import React from "react";
 import SubHeroImage from "../components/SubHeroImage";
 import TrainerCardsContainer from "../components/TrainerCardsContainer";
+import "../style/FindTrainerPage.scss";
 
 function FindTrainerPage() {
   return (
