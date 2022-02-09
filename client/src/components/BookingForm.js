@@ -70,9 +70,9 @@ function BookingForm({ trainerInfo }) {
                 Swal.fire({
                   icon: "success",
                   position: "center",
-                  color: "Green",
                   text: "The Teacher Received Your Request Check your profile to track the status",
                   timer: 3000,
+                  confirmButtonColor: "#3085d6",
                 })
               )
               .catch((err) => console.log(err));
