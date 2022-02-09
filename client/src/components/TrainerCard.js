@@ -29,7 +29,13 @@ export default function RecipeReviewCard({ trainerInfo }) {
           </Avatar>
         }
         action={
-          <Link to={`/bookingPage/${trainerInfo._id}`}>
+          <Link
+            to={
+              localStorage.getItem("loggedUserId")
+                ? `/bookingPage/${trainerInfo._id}`
+                : "/login"
+            }
+          >
             <IconButton aria-label="book">
               <BookIcon />
             </IconButton>
