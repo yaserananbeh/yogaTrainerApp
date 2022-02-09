@@ -17,7 +17,6 @@ export default function BasicTable({ appointmentsData }) {
     let newState = e.target.newStatus.value;
     if (newState != -1) {
       chosenAppointment.status = Number(newState);
-      console.log(chosenAppointment);
       axios
         .put(
           `http://localhost:4000/api/appointments/${chosenAppointment._id}`,

@@ -96,14 +96,26 @@ function LoginForm() {
               navigate("/");
             }
           } else {
-            console.log("bad credentials");
+            Swal.fire({
+              position: "top-end",
+              color: "red",
+              text: "Your email or password is wrong",
+              showConfirmButton: false,
+              timer: 3000,
+            });
           }
         })
         .catch((err) => {
           return console.log(`error : ${err.message}`);
         });
     } else {
-      console.log("not valid");
+      Swal.fire({
+        position: "top-end",
+        color: "red",
+        text: "Please fill the required fields",
+        showConfirmButton: false,
+        timer: 3000,
+      });
     }
   };
   return (

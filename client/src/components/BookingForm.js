@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
 // import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function BookingForm({ trainerInfo }) {
   let currentUserId = 1;
@@ -52,23 +53,42 @@ function BookingForm({ trainerInfo }) {
         )
         .then((resData) => {
           if (resData.data.data) {
-            console.log("can't book choose another time");
+            Swal.fire({
+              position: "top-end",
+              color: "red",
+              text: "Not Available Choose another time",
+              showConfirmButton: false,
+              timer: 3000,
+            });
           } else {
             axios
               .post(
                 `http://localhost:4000/api/appointments/`,
                 newAppointmentBody
               )
-              .then((appointmentData) => console.log(appointmentData))
+              .then(() =>
+                Swal.fire({
+                  icon: "success",
+                  position: "center",
+                  color: "Green",
+                  text: "The Teacher Received Your Request Check your profile to track the status",
+                  timer: 3000,
+                })
+              )
               .catch((err) => console.log(err));
-            console.log("can book");
           }
         })
         .catch((err) => {
           return console.log(`error : ${err.message}`);
         });
     } else {
-      console.log("can't book");
+      Swal.fire({
+        position: "top-end",
+        color: "red",
+        text: "The Date And Time Required",
+        showConfirmButton: false,
+        timer: 3000,
+      });
     }
   };
 
