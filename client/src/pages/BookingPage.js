@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import SubHeroImage from "../components/SubHeroImage";
 import TrainerCardBookingPage from "../components/TrainerCardBookingPage";
 import BookingForm from "../components/BookingForm";
+import "../style/BookingPage.scss";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -22,11 +23,11 @@ function BookingPage() {
       });
   }, [loader]);
   return (
-    <div>
+    <div className="bookingPageMainContainer">
       <SubHeroImage page="Booking Page" />
-      <Container>
+      <Container className="mainContainer">
         {trainerInfo && (
-          <Row>
+          <Row className="mainContainerRow">
             <Col>
               <TrainerCardBookingPage trainerInfo={trainerInfo} />
             </Col>

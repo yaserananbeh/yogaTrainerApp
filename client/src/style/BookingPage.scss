@@ -1,0 +1,43 @@
+.bookingPageMainContainer {
+  background-color: var(--smockWhite);
+
+  .mainContainer {
+    min-height: 60vh;
+    background-color: rgb(140, 194, 211);
+    border-radius: 10px;
+    margin: 2rem auto;
+    padding: 1rem;
+    .mainContainerRow {
+      width: 100%;
+      & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        &>div{
+          width: 100%;
+        }
+      }
+    }
+  }
+  // background-color: var(--smockWhite);
+  // min-height: 60vh;
+  // display: flex;
+  // justify-content: center;
+  // margin: 2rem auto;
+  // align-items: center;
+  // width: 80%;
+  // & > fieldset {
+  //   width: 50%;
+  //   & > div {
+  //     width: 100%;
+  //     background-color: rgb(114, 175, 194);
+  //     padding: 1rem;
+  //   }
+  // }
+  // .appointmentsTable{
+  //   .TableHead{
+  //     background-color: rgb(114, 175, 194);
+  //   }
+  // }
+}
