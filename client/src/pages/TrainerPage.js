@@ -1,54 +1,61 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import SubHeroImage from "../components/SubHeroImage";
-import CompleteTrainerData from "../components/CompleteTrainerData";
-import TrainerAppointmentsTable from "../components/TrainerAppointmentsTable";
 import axios from "axios";
-function TrainerPage() {
-  const [currentTrainerName, setCurrentTrainerName] = useState("yser");
-  const [trainerData, setTrainerData] = useState([]);
+import { LoggedUserContext } from "../App";
+import TrainerAppointmentsTable from "../components/TrainerAppointmentsTable";
+import CompleteTrainerData from "../components/CompleteTrainerData";
+
+function Test() {
+  const { currentLoggedInUser, setCurrentLoggedInUser } =
+    useContext(LoggedUserContext);
+  const [CurrentTrainerEmail, setCurrentTrainerEmail] = useState(null);
+  const [trainerData, setTrainerData] = useState(null);
   const [appointmentsData, setAppointmentsData] = useState([]);
+  const [test, setTest] = useState(0);
+
   useEffect(() => {
-    console.log("test");
-    axios
-      .get(`http://localhost:4000/api/trainers/find/${currentTrainerName}`)
-      .then((trainerData) => {
-        let resTrainerData = trainerData.data.data;
-        setTrainerData(resTrainerData);
-        return resTrainerData;
-      })
-      .then((res) => {
-        if (res.length) {
-          axios
-            .get(`http://localhost:4000/api/appointments/tfind/${res._id}`)
-            .then((res) => {
-              let appointmentsData = res.data.data;
-              setAppointmentsData(appointmentsData);
-              return appointmentsData;
-            });
-        }
-      })
-      .catch((err) => {
-        return console.log(`error : ${err.message}`);
-      });
-  }, [currentTrainerName]);
+    if (currentLoggedInUser.email) {
+      setCurrentTrainerEmail(currentLoggedInUser.email);
+      axios
+        .get(
+          `http://localhost:4000/api/trainers/find/${currentLoggedInUser.email}`
+        )
+        .then((trainerData) => {
+          let resTrainerData = trainerData.data.data;
+          return resTrainerData;
+        })
+        .then((resTrainerData) => {
+          if (resTrainerData) {
+            setTrainerData(resTrainerData);
+            axios
+              .get(
+                `http://localhost:4000/api/appointments/tfind/${resTrainerData._id}`
+              )
+              .then((res) => {
+                let appointmentsData = res.data.data;
+                setAppointmentsData(appointmentsData);
+                return appointmentsData;
+              });
+          }
+        });
+    }
+  }, [currentLoggedInUser]);
 
   return (
     <div>
       <SubHeroImage page="Trainer Dashboard" />
-      {trainerData.length ? (
-        appointmentsData.length ? (
-          <TrainerAppointmentsTable appointmentsData={appointmentsData} />
-        ) : (
-          "There's No Appointments"
-        )
+      {trainerData ? (
+        <TrainerAppointmentsTable appointmentsData={appointmentsData} />
       ) : (
         <CompleteTrainerData
-          setCurrentTrainerName={setCurrentTrainerName}
-          currentTrainerName={currentTrainerName}
+          test={test}
+          setTest={setTest}
+          currentLoggedInUser={currentLoggedInUser}
+          setCurrentLoggedInUser={setCurrentLoggedInUser}
         />
       )}
     </div>
   );
 }
 
-export default TrainerPage;
+export default Test;

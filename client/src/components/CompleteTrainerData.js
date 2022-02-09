@@ -4,7 +4,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function CompleteTrainerData({ currentTrainerName, setCurrentTrainerName }) {
+function CompleteTrainerData({ currentLoggedInUser }) {
+  const navigate = useNavigate();
   const checkTheValidation = (e, years, city, price, image) => {
     let addTrainerLock = 0;
 
@@ -12,6 +13,18 @@ function CompleteTrainerData({ currentTrainerName, setCurrentTrainerName }) {
       e.target.formBasicCity.nextSibling.classList = "form-text text-success";
     } else {
       e.target.formBasicCity.nextSibling.classList = "form-text text-danger";
+      addTrainerLock++;
+    }
+    if (years) {
+      e.target.formBasicPeriod.nextSibling.classList = "form-text text-success";
+    } else {
+      e.target.formBasicPeriod.nextSibling.classList = "form-text text-danger";
+      addTrainerLock++;
+    }
+    if (price) {
+      e.target.formBasicPrice.nextSibling.classList = "form-text text-success";
+    } else {
+      e.target.formBasicPrice.nextSibling.classList = "form-text text-danger";
       addTrainerLock++;
     }
 
@@ -33,10 +46,9 @@ function CompleteTrainerData({ currentTrainerName, setCurrentTrainerName }) {
       image
     );
     if (addTrainerLock == 0) {
-      // add new trainer
-      let fullName = "yaser123456";
-      let email = "test@test.com";
-      let password = 123456;
+      let fullName = currentLoggedInUser.name;
+      let email = currentLoggedInUser.email;
+      let password = currentLoggedInUser.password;
 
       let newTrainerBody = {
         name: fullName,
@@ -52,12 +64,12 @@ function CompleteTrainerData({ currentTrainerName, setCurrentTrainerName }) {
           Swal.fire({
             position: "top-end",
             color: "green",
-            text: "You have registered successfully",
+            text: "Your Data Saved Successfully",
             showConfirmButton: false,
             background: "#eee",
             timer: 3000,
           });
-          setCurrentTrainerName(fullName);
+          navigate("/");
         })
         .catch((err) => console.log(err));
     } else {
@@ -82,7 +94,7 @@ function CompleteTrainerData({ currentTrainerName, setCurrentTrainerName }) {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPeriod">
           <Form.Label>Years Of Experience</Form.Label>
-          <Form.Control type="number" min={0} step={1} />
+          <Form.Control type="number" min={0} step={1} max={30} />
           <Form.Text className="text-muted">0-30 Years</Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPrice">

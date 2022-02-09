@@ -10,7 +10,7 @@ import {
   Typography,
   Button,
 } from "@mui/material/";
-import { red, blueGrey,lightBlue } from "@mui/material/colors";
+import { red, blueGrey, lightBlue } from "@mui/material/colors";
 import BookIcon from "@mui/icons-material/Book";
 import { Link } from "react-router-dom";
 
@@ -69,11 +69,19 @@ export default function RecipeReviewCard({ trainerInfo }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Link to={`/bookingPage/${trainerInfo._id}`}>
-          <Button variant="contained" size="medium">
-            Book Now
-          </Button>
-        </Link>
+        {localStorage.getItem("loggedUserId") ? (
+          <Link to={`/bookingPage/${trainerInfo._id}`}>
+            <Button variant="contained" size="medium">
+              Book Now
+            </Button>
+          </Link>
+        ) : (
+          <Link to={`/login`}>
+            <Button variant="contained" size="medium">
+              Login To Book
+            </Button>
+          </Link>
+        )}
       </CardActions>
     </Card>
   );
