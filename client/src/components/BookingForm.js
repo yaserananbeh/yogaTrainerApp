@@ -18,13 +18,13 @@ function BookingForm({ trainerInfo }) {
     .join("-");
   const checkDateTimeValidation = (e, chosenTime, chosenDate) => {
     let bookingLock = 0;
-    if (chosenTime != 0) {
+    if (chosenTime !== "0") {
       e.target.formBasicTime.nextSibling.classList = "form-text text-success";
     } else {
       e.target.formBasicTime.nextSibling.classList = "form-text text-danger";
       bookingLock++;
     }
-    if (chosenDate != "Invalid Date") {
+    if (chosenDate !== "Invalid Date") {
       e.target.formBasicDate.nextSibling.classList = "form-text text-success";
     } else {
       e.target.formBasicDate.nextSibling.classList = "form-text text-danger";
@@ -39,7 +39,7 @@ function BookingForm({ trainerInfo }) {
       e.target.formBasicDate.value
     ).toLocaleDateString("en", options);
     let bookingLock = checkDateTimeValidation(e, chosenTime, chosenDate);
-    if (bookingLock == 0) {
+    if (bookingLock === 0) {
       const newAppointmentBody = {
         userId: currentUserId,
         trainerId: trainerInfo._id,

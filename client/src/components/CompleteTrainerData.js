@@ -45,7 +45,7 @@ function CompleteTrainerData({ currentLoggedInUser }) {
       price,
       image
     );
-    if (addTrainerLock == 0) {
+    if (addTrainerLock === 0) {
       let fullName = currentLoggedInUser.name;
       let email = currentLoggedInUser.email;
       let password = currentLoggedInUser.password;

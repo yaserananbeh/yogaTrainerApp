@@ -41,7 +41,7 @@ function RegisterForm() {
         "form-text text-danger";
       registerLock++;
     }
-    if (password == password2 && checkPassword(password2)) {
+    if (password === password2 && checkPassword(password2)) {
       e.target.formBasicPassword2.nextSibling.classList =
         "form-text text-success";
     } else {
@@ -65,7 +65,7 @@ function RegisterForm() {
       password,
       password2
     );
-    if (registerLock == 0) {
+    if (registerLock === 0) {
       // add new user
       let newUserBody = {
         name: fullName,

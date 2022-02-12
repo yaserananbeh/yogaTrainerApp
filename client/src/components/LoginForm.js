@@ -53,7 +53,7 @@ function LoginForm() {
     let password = e.target.formBasicPassword.value;
     let userType = e.target.formBasicUserType.value;
     let loginLock = checkTheValidation(e, email, password);
-    if (loginLock == 0) {
+    if (loginLock === 0) {
       // get users
       axios
         .get(`${process.env.REACT_APP_API_KEY}users/find/${email}`)
@@ -61,10 +61,10 @@ function LoginForm() {
           let resUserData = userData.data.data;
           if (
             resUserData &&
-            resUserData.password == password &&
-            resUserData.userRole == userType
+            resUserData.password === password &&
+            resUserData.userRole === Number(userType)
           ) {
-            if (resUserData.userRole == 1) {
+            if (resUserData.userRole === 1) {
               Swal.fire({
                 position: "top-end",
                 color: "green",

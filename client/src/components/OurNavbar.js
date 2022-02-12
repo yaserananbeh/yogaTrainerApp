@@ -36,11 +36,11 @@ function OurNavbar() {
               >
                 {currentLoggedInUser.name ? (
                   <>
-                    {currentLoggedInUser.userRole == 1 && (
+                    {currentLoggedInUser.userRole === 1 && (
                       <NavDropdown.Item
                         as={NavLink}
                         to={
-                          currentLoggedInUser.userRole == 1
+                          currentLoggedInUser.userRole === 1
                             ? "/trainerPage"
                             : "/profile"
                         }

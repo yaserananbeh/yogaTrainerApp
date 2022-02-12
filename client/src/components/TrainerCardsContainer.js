@@ -25,7 +25,7 @@ function TrainerCardsContainer() {
           word ? (
             trainers
               .filter(
-                (data) => data.name.toLowerCase() == word.toLocaleLowerCase()
+                (data) => data.name.toLowerCase() === word.toLocaleLowerCase()
               )
               .map((data, index) => (
                 <TrainerCard trainerInfo={data} key={data.email + index} />

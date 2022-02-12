@@ -15,7 +15,7 @@ export default function BasicTable({ appointmentsData }) {
   const handleSubmitNewStatus = (e, chosenAppointment) => {
     e.preventDefault();
     let newState = e.target.newStatus.value;
-    if (newState != -1) {
+    if (newState !== -1) {
       chosenAppointment.status = Number(newState);
       axios
         .put(
@@ -73,9 +73,9 @@ export default function BasicTable({ appointmentsData }) {
                 <TableCell align="right">{row.appointmentDate}</TableCell>
                 <TableCell align="right">{row.appointmentHour}</TableCell>
                 <TableCell align="right">
-                  {row.status == 0
+                  {row.status === 0
                     ? "Pending"
-                    : row.status == 1
+                    : row.status === 1
                     ? "Accepted"
                     : "Rejected"}
                 </TableCell>
