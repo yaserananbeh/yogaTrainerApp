@@ -9,7 +9,7 @@ function TrainerCardsContainer() {
   const [word, setWord] = React.useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/trainers/`)
+      .get(`${process.env.REACT_APP_API_KEY}trainers/`)
       .then((res) => {
         setTrainers(res.data.data);
       })

@@ -74,7 +74,7 @@ function RegisterForm() {
         userRole: userType,
       };
       axios
-        .post(`http://localhost:4000/api/users/`, newUserBody)
+        .post(`${process.env.REACT_APP_API_KEY}users/`, newUserBody)
         .then(() => {
           Swal.fire({
             position: "top-end",

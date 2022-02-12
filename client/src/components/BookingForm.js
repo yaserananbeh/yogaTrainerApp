@@ -48,7 +48,7 @@ function BookingForm({ trainerInfo }) {
       };
       axios
         .post(
-          `http://localhost:4000/api/appointments/efind/`,
+          `${process.env.REACT_APP_API_KEY}appointments/efind/`,
           newAppointmentBody
         )
         .then((resData) => {
@@ -63,7 +63,7 @@ function BookingForm({ trainerInfo }) {
           } else {
             axios
               .post(
-                `http://localhost:4000/api/appointments/`,
+                `${process.env.REACT_APP_API_KEY}appointments/`,
                 newAppointmentBody
               )
               .then(() =>

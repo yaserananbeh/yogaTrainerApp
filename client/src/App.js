@@ -20,7 +20,7 @@ function App() {
     if (localStorage.getItem("loggedUserId")) {
       axios
         .get(
-          `http://localhost:4000/api/users/${JSON.parse(
+          `${process.env.REACT_APP_API_KEY}users/${JSON.parse(
             localStorage.getItem("loggedUserId")
           )}`
         )

@@ -19,7 +19,7 @@ function Test() {
       setCurrentTrainerEmail(currentLoggedInUser.email);
       axios
         .get(
-          `http://localhost:4000/api/trainers/find/${currentLoggedInUser.email}`
+          `${process.env.REACT_APP_API_KEY}trainers/find/${currentLoggedInUser.email}`
         )
         .then((trainerData) => {
           let resTrainerData = trainerData.data.data;
@@ -30,7 +30,7 @@ function Test() {
             setTrainerData(resTrainerData);
             axios
               .get(
-                `http://localhost:4000/api/appointments/tfind/${resTrainerData._id}`
+                `${process.env.REACT_APP_API_KEY}appointments/tfind/${resTrainerData._id}`
               )
               .then((res) => {
                 let appointmentsData = res.data.data;

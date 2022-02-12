@@ -59,7 +59,7 @@ function CompleteTrainerData({ currentLoggedInUser }) {
         image: image,
       };
       axios
-        .post(`http://localhost:4000/api/trainers/`, newTrainerBody)
+        .post(`${process.env.REACT_APP_API_KEY}trainers/`, newTrainerBody)
         .then(() => {
           Swal.fire({
             position: "top-end",

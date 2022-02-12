@@ -13,7 +13,7 @@ function BookingPage() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/trainers/${trainerId}`)
+      .get(`${process.env.REACT_APP_API_KEY}trainers/${trainerId}`)
       .then((res) => {
         setTrainerInfo(res.data.data);
         setLoader(false);

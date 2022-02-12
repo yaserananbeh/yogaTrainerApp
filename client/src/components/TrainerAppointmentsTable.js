@@ -19,7 +19,7 @@ export default function BasicTable({ appointmentsData }) {
       chosenAppointment.status = Number(newState);
       axios
         .put(
-          `http://localhost:4000/api/appointments/${chosenAppointment._id}`,
+          `${process.env.REACT_APP_API_KEY}appointments/${chosenAppointment._id}`,
           chosenAppointment
         )
         .then(() => {

@@ -56,7 +56,7 @@ function LoginForm() {
     if (loginLock == 0) {
       // get users
       axios
-        .get(`http://localhost:4000/api/users/find/${email}`)
+        .get(`${process.env.REACT_APP_API_KEY}users/find/${email}`)
         .then((userData) => {
           let resUserData = userData.data.data;
           if (
