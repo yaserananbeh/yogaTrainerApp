@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap/";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function CompleteTrainerData({ currentLoggedInUser }) {

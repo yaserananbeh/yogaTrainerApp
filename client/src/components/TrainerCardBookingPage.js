@@ -5,13 +5,9 @@ import {
   CardMedia,
   CardContent,
   Avatar,
-  IconButton,
   Typography,
-  Button,
 } from "@mui/material/";
-import { red, blueGrey,lightBlue } from "@mui/material/colors";
-import BookIcon from "@mui/icons-material/Book";
-import { Link } from "react-router-dom";
+import {  blueGrey,lightBlue } from "@mui/material/colors";
 
 export default function RecipeReviewCard({ trainerInfo }) {
   let options = {

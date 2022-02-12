@@ -3,7 +3,7 @@ import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap/";
 import { NavLink } from "react-router-dom";
 import { LoggedUserContext } from "../App";
 function OurNavbar() {
-  const { currentLoggedInUser, setCurrentLoggedInUser } =
+  const { currentLoggedInUser } =
     useContext(LoggedUserContext);
   return (
     <div>

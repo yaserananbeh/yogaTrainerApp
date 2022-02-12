@@ -9,14 +9,12 @@ import "../style/TrainerPage.scss";
 function Test() {
   const { currentLoggedInUser, setCurrentLoggedInUser } =
     useContext(LoggedUserContext);
-  const [CurrentTrainerEmail, setCurrentTrainerEmail] = useState(null);
   const [trainerData, setTrainerData] = useState(null);
   const [appointmentsData, setAppointmentsData] = useState([]);
   const [test, setTest] = useState(0);
 
   useEffect(() => {
     if (currentLoggedInUser.email) {
-      setCurrentTrainerEmail(currentLoggedInUser.email);
       axios
         .get(
           `${process.env.REACT_APP_API_KEY}trainers/find/${currentLoggedInUser.email}`

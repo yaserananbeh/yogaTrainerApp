@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const { currentLoggedInUser, setCurrentLoggedInUser } =
+  const {  setCurrentLoggedInUser } =
     useContext(LoggedUserContext);
   const validateEmail = (email) => {
     return String(email)

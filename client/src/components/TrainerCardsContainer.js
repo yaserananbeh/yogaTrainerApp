@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import TrainerCard from "./TrainerCard";
 import "../style/TrainerCardsContainer.scss";
